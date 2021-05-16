@@ -4,7 +4,7 @@ import tcp_server
 
 class TCPServerMultiClient(tcp_server.TCPServer):
 
-    def __init__(self, host, port) -> None:
+    def __init__(self, host: str, port: int) -> None:
         super().__init__(host, port)
 
     def wait_for_client(self):

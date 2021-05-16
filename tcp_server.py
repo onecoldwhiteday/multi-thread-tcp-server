@@ -4,13 +4,13 @@ from datetime import datetime
 
 class TCPServer:
 
-    def __init__(self, host, port) -> None:
+    def __init__(self, host: str, port: int) -> None:
         self.host = host
         self.port = port
         self.sock = None
 
     @staticmethod
-    def printwt(msg) -> None:
+    def printwt(msg: str) -> None:
         # Print message with timestamp 
 
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -32,7 +32,7 @@ class TCPServer:
         self.handle_client(client_sock, client_address)
 
     @staticmethod
-    def get_capital(country) -> str:
+    def get_capital(country: str) -> str:
         capitals = {'Ireland': 'Dublin', 'Great Britain': 'London', 'Scotland': 'Edinburgh'}
 
         if country in capitals.keys():
@@ -66,7 +66,7 @@ class TCPServer:
             client_sock.close()
             self.printwt(f'Client socket closed for {client_address}')
 
-    def shutdown_server(self):
+    def shutdown_server(self) -> None:
         self.printwt('Shutting down server...')
         self.sock.close()
 
