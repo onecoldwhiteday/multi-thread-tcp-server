@@ -1,6 +1,7 @@
 import socket
 from datetime import datetime
 
+
 class TCPServer:
 
     def __init__(self, host, port) -> None:
@@ -32,8 +33,8 @@ class TCPServer:
 
     @staticmethod
     def get_capital(country) -> str:
-        capitals= { 'Ireland': 'Dublin', 'Great Britain': 'London', 'Scotland': 'Edinburgh' }
-        
+        capitals = {'Ireland': 'Dublin', 'Great Britain': 'London', 'Scotland': 'Edinburgh'}
+
         if country in capitals.keys():
             return f"{capitals[country]} is a capital of {country}"
         else:
@@ -50,6 +51,7 @@ class TCPServer:
                 print(country)
 
                 self.printwt(f'[Response to {client_address}]: ')
+                client_sock.send(resp.encode())
                 print(resp)
 
                 # More data, if it's greater than 1024 bytes limit
@@ -69,9 +71,8 @@ class TCPServer:
         self.sock.close()
 
 
-
 def main():
-    tcp_server = TCPServer('127.0.0.1', 4444)
+    tcp_server = TCPServer('127.0.0.1', 8080)
     tcp_server.configure_server()
     tcp_server.wait_for_client()
     tcp_server.shutdown_server()
